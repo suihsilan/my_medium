@@ -1,0 +1,33 @@
+<h2 class="title notification is-light">登入資料填寫</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <label class="label"><%= f.label :email %></label>
+    <div class="control">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+  <label class="label"><%= f.label :password %></label>
+  <div class="control">
+    <%= f.password_field :password, autocomplete: "current-password", class: 'input' %>
+  </div>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <label class="label">
+      <%= f.check_box :remember_me, type: 'checkbox' %>
+      <%= f.label :remember_me%>
+      <label>   
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "登入", class: 'button is-light' %>
+    <%= render "devise/shared/links" %>
+  </div>
+<% end %>
+
+
